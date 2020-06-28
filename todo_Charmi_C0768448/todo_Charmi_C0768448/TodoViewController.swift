@@ -38,5 +38,16 @@ class TodoViewController: UIViewController {
         
     }
     
+    func checkTitle() -> Bool {
+        if (todoLbl.text?.isEmpty ?? true) {
+            let alert = UIAlertController(title: "Title cannot be blank", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        }
+        else {
+            return true
+        }
+    }
 
 }//class end

@@ -16,6 +16,8 @@
 		A1D5437624A290B0007CEE78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D5437424A290B0007CEE78 /* LaunchScreen.storyboard */; };
 		A1EF9D1224A8D199009325EF /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF9D1124A8D199009325EF /* TodoItem.swift */; };
 		A1EF9D1624A8DAF2009325EF /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF9D1524A8DAF2009325EF /* TaskListViewController.swift */; };
+		A1EF9D1824A8E02B009325EF /* TodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF9D1724A8E02B009325EF /* TodoViewController.swift */; };
+		A1EF9D1A24A8E075009325EF /* MoveTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF9D1924A8E075009325EF /* MoveTodoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A1D5437724A290B0007CEE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1EF9D1124A8D199009325EF /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		A1EF9D1524A8DAF2009325EF /* TaskListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewController.swift; sourceTree = "<group>"; };
+		A1EF9D1724A8E02B009325EF /* TodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewController.swift; sourceTree = "<group>"; };
+		A1EF9D1924A8E075009325EF /* MoveTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveTodoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		A1D5436524A290AD007CEE78 /* todo_Charmi_C0768448 */ = {
 			isa = PBXGroup;
 			children = (
+				A1EF9D1724A8E02B009325EF /* TodoViewController.swift */,
 				A1D5436624A290AD007CEE78 /* AppDelegate.swift */,
 				A1D5436824A290AD007CEE78 /* SceneDelegate.swift */,
 				A1D5436A24A290AD007CEE78 /* ViewController.swift */,
@@ -72,6 +77,7 @@
 				A1D5436F24A290AD007CEE78 /* todo_Charmi_C0768448.xcdatamodeld */,
 				A1EF9D1124A8D199009325EF /* TodoItem.swift */,
 				A1EF9D1524A8DAF2009325EF /* TaskListViewController.swift */,
+				A1EF9D1924A8E075009325EF /* MoveTodoViewController.swift */,
 			);
 			path = todo_Charmi_C0768448;
 			sourceTree = "<group>";
@@ -149,6 +155,8 @@
 			files = (
 				A1EF9D1224A8D199009325EF /* TodoItem.swift in Sources */,
 				A1D5436B24A290AD007CEE78 /* ViewController.swift in Sources */,
+				A1EF9D1824A8E02B009325EF /* TodoViewController.swift in Sources */,
+				A1EF9D1A24A8E075009325EF /* MoveTodoViewController.swift in Sources */,
 				A1D5436724A290AD007CEE78 /* AppDelegate.swift in Sources */,
 				A1D5436924A290AD007CEE78 /* SceneDelegate.swift in Sources */,
 				A1D5437124A290AD007CEE78 /* todo_Charmi_C0768448.xcdatamodeld in Sources */,
