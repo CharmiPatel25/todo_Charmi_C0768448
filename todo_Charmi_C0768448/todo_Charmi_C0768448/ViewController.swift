@@ -177,7 +177,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                    completion(true)
            }
            
-           delete.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+           delete.backgroundColor = #colorLiteral(red: 0.6008332166, green: 0.1533286675, blue: 0.6352941176, alpha: 1)
            delete.image = UIImage(systemName: "trash.fill")
            return UISwipeActionsConfiguration(actions: [delete])
        }

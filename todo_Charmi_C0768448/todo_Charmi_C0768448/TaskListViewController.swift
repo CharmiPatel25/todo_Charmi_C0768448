@@ -89,7 +89,7 @@ extension TaskListViewController {
     func loadTodos(with request: NSFetchRequest<Todo> = Todo.fetchRequest(), predicate: NSPredicate? = nil) {
            
            let sortOptions = ["date", "name"]
-           let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
+            let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
            request.sortDescriptors = [NSSortDescriptor(key: sortOptions[selectedSort], ascending: true)]
            if let addtionalPredicate = predicate
            {
@@ -185,10 +185,10 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
                    let task = tasksArray[indexPath.row]
                    cell.textLabel?.text = task.name
                    if (task.due_date! < Date() && task.parentFolder?.name != "Archived") {
-                    cell.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
                    }
                    if (Calendar.current.isDateInToday(task.due_date!) && task.parentFolder?.name != "Archived") {
-                    cell.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                    cell.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
                    }
                    return cell
        }
@@ -202,7 +202,7 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
             completion(true)
         }
         
-        delete.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        delete.backgroundColor = #colorLiteral(red: 0.6008332166, green: 0.1533286675, blue: 0.6352941176, alpha: 1)
         delete.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [delete])
     }
@@ -216,9 +216,9 @@ extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
                self.todoToMove.append(self.tasksArray[indexPath.row])
                self.performSegue(withIdentifier: "moveTodoScreen", sender: nil)
            }
-           complete.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+           complete.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
            complete.image = UIImage(systemName: "checkmark.circle.fill")
-           move.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+           move.backgroundColor = #colorLiteral(red: 0.3125264625, green: 0.452648486, blue: 0.9764705896, alpha: 1)
            move.image = UIImage(systemName: "arrowshape.turn.up.right.fill")
            return UISwipeActionsConfiguration(actions: [complete, move])
        }
