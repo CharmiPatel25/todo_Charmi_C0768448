@@ -92,6 +92,24 @@ class TaskListViewController: UIViewController {
         }
     }
     
+    func saveTodo(title: String, dueDate: Date)
+    {
+        let todo = Todo(context: todoListContext)
+        todo.name = title
+        todo.due_date = dueDate
+        todo.date = Date()
+        todo.parentFolder = selectedCategory
+        saveTodos()
+        tasksArray.append(todo)
+        tabelView.reloadData()
+    }
+    
+    
+    func updateTodo() {
+        saveTodos()
+        tabelView.reloadData()
+    }
+    
     func markTodoCompleted() {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

@@ -26,6 +26,20 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func saveBtn(_ sender: Any) {
+        if(checkTitle())
+        {
+            if todo == nil
+            {
+                delegate?.saveTodo(title: todoLbl!.text!, dueDate: datePicker!.date)
+            }
+            else
+            {
+                todo?.name = todoLbl!.text!
+                todo?.due_date = datePicker!.date
+                delegate?.updateTodo()
+            }
+            navigationController?.popViewController(animated: true)
+        }
         
     }
     
@@ -57,5 +71,7 @@ class TodoViewController: UIViewController {
             return true
         }
     }
+    
+    
 
 }//class end
