@@ -90,5 +90,20 @@ class ViewController: UIViewController {
         }
     }
     
+    func fetchData() {
+    
+            let request: NSFetchRequest<Category> = Category.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+    
+            request.sortDescriptors = [sortDescriptor]
+            do {
+                categoryArray = try categoryContext.fetch(request)
+            } catch {
+                print("Error loading categories: \(error.localizedDescription)")
+            }
+   
+            tabelView.reloadData()
+            
+        }
 } //class end
 
