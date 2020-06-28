@@ -22,7 +22,14 @@ class TodoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        if todo == nil {
+                    buttonStack.isHidden = true
+                }
+                if let todoData = todo
+                {
+                    todoLbl.text = todoData.name
+                    datePicker.date = todoData.due_date!
+                }
     }
     
     @IBAction func saveBtn(_ sender: Any) {

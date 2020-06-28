@@ -10,22 +10,35 @@ import UIKit
 import CoreData
 
 class MoveTodoViewController: UIViewController {
-
+    
+    var categories = [Category]()
+    var selectedTodo: [Todo]? {
+        didSet {
+            loadCategories()
+        }
+    }
+ let moveTodoContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func cancelBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
     }
-    */
+    
+    func loadCategories() {
+           let request: NSFetchRequest<Category> = Category.fetchRequest()
+           let categoryPredicate = NSPredicate(format: "No match %@", selectedTodo?[0].parentFolder?.name ?? "")
+           request.predicate = categoryPredicate
+           
+           do {
+               categories = try moveTodoContext.fetch(request)
+           } catch {
+               print("Error  \(error.localizedDescription)")
+           }
+       }
 
 }
