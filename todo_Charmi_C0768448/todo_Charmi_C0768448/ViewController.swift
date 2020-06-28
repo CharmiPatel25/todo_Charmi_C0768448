@@ -144,5 +144,12 @@ class ViewController: UIViewController {
             
         }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           let destination = segue.destination as! TaskListViewController
+           if let indexPath = tabelView.indexPathForSelectedRow {
+               destination.selectedCategory = categoryArray[indexPath.row]
+           }
+       }
+    
 } //class end
 
