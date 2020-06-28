@@ -76,5 +76,19 @@ class ViewController: UIViewController {
         
     }
     
+    func initialSetUp() {
+        let categoryNames = self.categoryArray.map {$0.name}
+        guard !categoryNames.contains("Archived") else {return}
+        let newCategory = Category(context: self.categoryContext)
+        newCategory.name = "Archived"
+        self.categoryArray.append(newCategory)
+        do {
+            try categoryContext.save()
+            tabelView.reloadData()
+        } catch {
+            print("Error saving categories \(error.localizedDescription)")
+        }
+    }
+    
 } //class end
 
