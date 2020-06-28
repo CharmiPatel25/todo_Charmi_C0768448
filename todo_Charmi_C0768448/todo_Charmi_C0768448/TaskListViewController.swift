@@ -9,12 +9,9 @@
 import UIKit
 import CoreData
 
-class TaskListViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate{
+class TaskListViewController: UIViewController {
    
-    
-    
     @IBOutlet weak var sortSegment: UISegmentedControl!
-    
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var tabelView: UITableView!
     
@@ -35,28 +32,13 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setUpTableView()
+               showSearchBar()
+               categoryLabel.text = selectedCategory!.name
         
     }
     
-    func loadTodos(with request: NSFetchRequest<Todo> = Todo.fetchRequest(), predicate: NSPredicate? = nil) {
-        
-        let sortOptions = ["date", "name"]
-        let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
-        request.sortDescriptors = [NSSortDescriptor(key: sortOptions[selectedSort], ascending: true)]
-        if let addtionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [todoPredicate, addtionalPredicate])
-        } else {
-            request.predicate = todoPredicate
-        }
-        
-        do {
-            tasksArray = try todoListContext.fetch(request)
-        } catch {
-            print("Error loading todos \(error.localizedDescription)")
-        }
-        
-    }
+   
     @IBAction func addTodo(_ sender: Any) {
         performSegue(withIdentifier: "todoViewScreen", sender: self)
     }
@@ -74,7 +56,56 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
                
                loadTodos()
                tabelView.reloadData()
+        
+        
+        
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? TodoViewController {
+            destination.delegate = self
+            if selectedTodo != nil
+            {
+                destination.todo = selectedTodo
+            }
+        }
+        
+        if let destination = segue.destination as? MoveTodoViewController {
+                destination.selectedTodo = todoToMove
+        }
+        
+    }
+    @IBAction func unwindToTaskListView(_ unwindSegue: UIStoryboardSegue) {
+        saveTodos()
+        loadTodos()
+        tabelView.reloadData()
+    }
+    
+   
+    
+}//class end
+extension TaskListViewController {
+    func loadTodos(with request: NSFetchRequest<Todo> = Todo.fetchRequest(), predicate: NSPredicate? = nil) {
+           
+           let sortOptions = ["date", "name"]
+           let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
+           request.sortDescriptors = [NSSortDescriptor(key: sortOptions[selectedSort], ascending: true)]
+           /*if let addtionalPredicate = predicate
+           {
+               request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [todoPredicate, addtionalPredicate])
+           } else
+           {
+               request.predicate = todoPredicate
+           }*/
+           
+           do {
+               tasksArray = try todoListContext.fetch(request)
+           } catch {
+               print("Error loading todos \(error.localizedDescription)")
+           }
+           
+       }
     
     func deleteTodoFromList() {
         
@@ -93,19 +124,6 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
             print("Error  \(error.localizedDescription)")
         }
     }
-    
-    func saveTodo(title: String, dueDate: Date)
-    {
-        let todo = Todo(context: todoListContext)
-        todo.name = title
-        todo.due_date = dueDate
-        todo.date = Date()
-        todo.parentFolder = selectedCategory
-        saveTodos()
-        tasksArray.append(todo)
-        tabelView.reloadData()
-    }
-    
     
     func updateTodo() {
         saveTodos()
@@ -132,6 +150,25 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
         
     }
     
+    
+    func saveTodo(title: String, dueDate: Date)
+    {
+        let todo = Todo(context: todoListContext)
+        todo.name = title
+        todo.due_date = dueDate
+        todo.date = Date()
+        todo.parentFolder = selectedCategory
+        saveTodos()
+        tasksArray.append(todo)
+        tabelView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+           selectedTodo = nil
+       }
+}
+
+extension TaskListViewController: UITableViewDelegate, UITableViewDataSource {
     func setUpTableView() {
         tabelView.delegate = self
         tabelView.dataSource = self
@@ -148,10 +185,10 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
                    let task = tasksArray[indexPath.row]
                    cell.textLabel?.text = task.name
                    if (task.due_date! < Date() && task.parentFolder?.name != "Archived") {
-                    cell.backgroundColor = UIColor.red
+                    cell.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
                    }
                    if (Calendar.current.isDateInToday(task.due_date!) && task.parentFolder?.name != "Archived") {
-                    cell.backgroundColor = UIColor.green
+                    cell.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
                    }
                    return cell
        }
@@ -165,7 +202,7 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
             completion(true)
         }
         
-        delete.backgroundColor = UIColor.lightGray
+        delete.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         delete.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [delete])
     }
@@ -190,9 +227,9 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
            selectedTodo = tasksArray[indexPath.row]
            performSegue(withIdentifier: "todoViewScreen", sender: self)
        }
-    
-    
-    
+}
+
+extension TaskListViewController: UISearchBarDelegate {
     //search task
     func showSearchBar() {
         
@@ -201,7 +238,7 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
         navigationItem.searchController = searchController
         searchController.searchBar.delegate = self
         definesPresentationContext = true
-        searchController.searchBar.searchTextField.textColor = .white
+        searchController.searchBar.searchTextField.textColor = .black
         
     }
     
@@ -235,6 +272,5 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
         tabelView.reloadData()
         searchBar.resignFirstResponder()
     }
-    
-    
-}//class end
+}
+

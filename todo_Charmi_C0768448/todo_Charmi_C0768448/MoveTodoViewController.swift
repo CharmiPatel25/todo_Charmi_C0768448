@@ -30,20 +30,23 @@ class MoveTodoViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    func loadCategories() {
-           let request: NSFetchRequest<Category> = Category.fetchRequest()
-           let categoryPredicate = NSPredicate(format: "No match %@", selectedTodo?[0].parentFolder?.name ?? "")
-           request.predicate = categoryPredicate
-           
-           do {
-               categories = try moveTodoContext.fetch(request)
-           } catch {
-               print("Error  \(error.localizedDescription)")
-           }
-       }
+    
 
 } //class end
 
+extension MoveTodoViewController {
+    func loadCategories() {
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        let categoryPredicate = NSPredicate(format: "No match %@", selectedTodo?[0].parentFolder?.name ?? "")
+        request.predicate = categoryPredicate
+        
+        do {
+            categories = try moveTodoContext.fetch(request)
+        } catch {
+            print("Error  \(error.localizedDescription)")
+        }
+    }
+}
 
 extension MoveTodoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

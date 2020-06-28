@@ -18,7 +18,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mRu-ay-bRs">
                                 <rect key="frame" x="0.0" y="161" width="414" height="701"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="sectionIndexBackgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" rowHeight="85" id="Nfw-0P-SkB">
                                         <rect key="frame" x="0.0" y="28" width="414" height="85"/>
@@ -26,21 +25,19 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nfw-0P-SkB" id="0RX-n6-Yjo">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvl-wo-eeV">
                                 <rect key="frame" x="0.0" y="98" width="414" height="53"/>
-                                <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="mRu-ay-bRs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3I3-Ze-9od"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mRu-ay-bRs" secondAttribute="bottom" id="XWq-JT-EaN"/>
@@ -92,6 +89,7 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1e-ss-EsI">
                                 <rect key="frame" x="0.0" y="98" width="414" height="53"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -104,11 +102,10 @@
                                 </segments>
                                 <connections>
                                     <action selector="sortToDo:" destination="yBZ-9B-Umz" eventType="valueChanged" id="Vby-Pz-OU9"/>
-                                    <action selector="sortTodos:" destination="yBZ-9B-Umz" eventType="valueChanged" id="5ph-eH-kio"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="jLl-X4-ErS" firstAttribute="trailing" secondItem="nLw-c3-hsn" secondAttribute="trailing" id="2Xj-1e-8qf"/>
                             <constraint firstItem="t1e-ss-EsI" firstAttribute="top" secondItem="jLl-X4-ErS" secondAttribute="top" constant="10" id="3j0-1W-ggP"/>
@@ -124,7 +121,7 @@
                         <viewLayoutGuide key="safeArea" id="jLl-X4-ErS"/>
                     </view>
                     <navigationItem key="navigationItem" id="OU8-8V-quc">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="GiC-kE-ghJ">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="GiC-kE-ghJ">
                             <connections>
                                 <action selector="addTodo:" destination="yBZ-9B-Umz" id="lDF-pY-A5d"/>
                             </connections>
@@ -161,6 +158,7 @@
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7hg-sm-ws1">
                                 <rect key="frame" x="0.0" y="98" width="414" height="26.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -197,7 +195,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="AaY-dA-dmi" firstAttribute="leading" secondItem="YvN-cf-5Nt" secondAttribute="leading" constant="10" id="34y-ai-O6y"/>
                             <constraint firstItem="7hg-sm-ws1" firstAttribute="top" secondItem="YvN-cf-5Nt" secondAttribute="top" constant="10" id="3QJ-gU-Ec9"/>
@@ -245,6 +243,7 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="w8c-py-WPX">
                                 <rect key="frame" x="0.0" y="80" width="414" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="QhW-MC-WK8">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -271,7 +270,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.85744650229999997" blue="0.6156412591" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="UwA-0f-Hni" firstAttribute="centerX" secondItem="Q4i-rB-6b1" secondAttribute="centerX" id="1hi-LS-Af0"/>
                             <constraint firstItem="UwA-0f-Hni" firstAttribute="leading" secondItem="WHo-CR-5vT" secondAttribute="leading" id="G5E-6F-HrN"/>
@@ -318,6 +317,5 @@
     <resources>
         <image name="delete.right.fill" catalog="system" width="128" height="104"/>
         <image name="dongsign.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
     </resources>
 </document>
