@@ -14,6 +14,7 @@
 		A1D5437124A290AD007CEE78 /* todo_Charmi_C0768448.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1D5436F24A290AD007CEE78 /* todo_Charmi_C0768448.xcdatamodeld */; };
 		A1D5437324A290B0007CEE78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1D5437224A290B0007CEE78 /* Assets.xcassets */; };
 		A1D5437624A290B0007CEE78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1D5437424A290B0007CEE78 /* LaunchScreen.storyboard */; };
+		A1EF9D1224A8D199009325EF /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1EF9D1124A8D199009325EF /* TodoItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A1D5437224A290B0007CEE78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1D5437524A290B0007CEE78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1D5437724A290B0007CEE78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1EF9D1124A8D199009325EF /* TodoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A1D5437424A290B0007CEE78 /* LaunchScreen.storyboard */,
 				A1D5437724A290B0007CEE78 /* Info.plist */,
 				A1D5436F24A290AD007CEE78 /* todo_Charmi_C0768448.xcdatamodeld */,
+				A1EF9D1124A8D199009325EF /* TodoItem.swift */,
 			);
 			path = todo_Charmi_C0768448;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1EF9D1224A8D199009325EF /* TodoItem.swift in Sources */,
 				A1D5436B24A290AD007CEE78 /* ViewController.swift in Sources */,
 				A1D5436724A290AD007CEE78 /* AppDelegate.swift in Sources */,
 				A1D5436924A290AD007CEE78 /* SceneDelegate.swift in Sources */,
