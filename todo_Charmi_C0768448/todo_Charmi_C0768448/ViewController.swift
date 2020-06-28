@@ -175,5 +175,30 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return cell
         }
     
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            
+                self.categoryContext.delete(self.categoryArray[indexPath.row])
+                self.categoryArray.remove(at: indexPath.row)
+                do {
+                    try self.categoryContext.save()
+                } catch {
+                    print("Error  \(error.localizedDescription)")
+                }
+                
+                //        reloads data
+                self.tabelView.reloadData()
+                completion(true)
+        }
+        
+        delete.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        delete.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "noteListScreen", sender: self)
+    }
 } //class end
 
