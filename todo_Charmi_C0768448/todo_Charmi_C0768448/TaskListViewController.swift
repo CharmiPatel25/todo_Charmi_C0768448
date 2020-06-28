@@ -16,21 +16,45 @@ class TaskListViewController: UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var tabelView: UITableView!
     
+    var selectedSort = 0
+    var selectedCategory: Category? {
+        didSet {
+            loadTodos()
+        }
+    }
+    
+    var categoryName: String!
+    let todoListContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var tasksArray = [Todo]()
+    var selectedTodo: Todo?
+    var todoToMove = [Todo]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func loadTodos(with request: NSFetchRequest<Todo> = Todo.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let sortOptions = ["date", "name"]
+        let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
+        request.sortDescriptors = [NSSortDescriptor(key: sortOptions[selectedSort], ascending: true)]
+        if let addtionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [todoPredicate, addtionalPredicate])
+        } else {
+            request.predicate = todoPredicate
+        }
+        
+        do {
+            tasksArray = try todoListContext.fetch(request)
+        } catch {
+            print("Error loading todos \(error.localizedDescription)")
+        }
+        
     }
-    */
+    
 
 }

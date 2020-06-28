@@ -130,8 +130,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="categoryLabel" destination="t1e-ss-EsI" id="T0a-Hv-kzF"/>
-                        <outlet property="sortSegment" destination="c3H-t7-XwZ" id="lxP-DH-pPt"/>
+                        <outlet property="categoryLabel" destination="t1e-ss-EsI" id="lru-mL-ceZ"/>
+                        <outlet property="sortSegment" destination="c3H-t7-XwZ" id="CSk-hJ-Vqy"/>
+                        <outlet property="tabelView" destination="nLw-c3-hsn" id="WMk-pW-SQO"/>
                         <segue destination="uzU-aK-Lmp" kind="show" identifier="todoViewScreen" id="PZX-9S-jVD"/>
                         <segue destination="NPh-tY-6ZX" kind="presentation" identifier="moveTodoScreen" id="PPm-CS-fsL"/>
                     </connections>
