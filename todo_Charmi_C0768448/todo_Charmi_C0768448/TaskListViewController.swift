@@ -74,6 +74,14 @@ class TaskListViewController: UIViewController {
                tabelView.reloadData()
     }
     
-    
+    func deleteTodoFromList() {
+        
+        todoListContext.delete(selectedTodo!)
+        tasksArray.removeAll { (Todo) -> Bool in
+            Todo == selectedTodo!
+        }
+        tabelView.reloadData()
+        
+    }
     
 }//class end

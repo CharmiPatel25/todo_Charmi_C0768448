@@ -30,6 +30,8 @@ class TodoViewController: UIViewController {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
+        delegate?.deleteTodoFromList()
+        navigationController?.popViewController(animated: true)
     }
     
     
