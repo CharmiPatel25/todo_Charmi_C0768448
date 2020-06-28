@@ -9,7 +9,9 @@
 import UIKit
 import CoreData
 
-class TaskListViewController: UIViewController {
+class TaskListViewController: UIViewController ,UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate{
+   
+    
     
     @IBOutlet weak var sortSegment: UISegmentedControl!
     
@@ -129,4 +131,28 @@ class TaskListViewController: UIViewController {
         }
         
     }
+    
+    func setUpTableView() {
+        tabelView.delegate = self
+        tabelView.dataSource = self
+        tabelView.estimatedRowHeight = 44
+        tabelView.rowHeight = UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          return tasksArray.count
+       }
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "todoCell", for: indexPath)
+                   let task = tasksArray[indexPath.row]
+                   cell.textLabel?.text = task.name
+                   if (task.due_date! < Date() && task.parentFolder?.name != "Archived") {
+                    cell.backgroundColor = UIColor.red
+                   }
+                   if (Calendar.current.isDateInToday(task.due_date!) && task.parentFolder?.name != "Archived") {
+                    cell.backgroundColor = UIColor.green
+                   }
+                   return cell
+       }
 }//class end
