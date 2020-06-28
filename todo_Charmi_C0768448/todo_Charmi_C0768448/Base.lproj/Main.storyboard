@@ -55,11 +55,12 @@
                     <navigationItem key="navigationItem" id="BPU-Aj-O0b">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="50K-dn-lpa">
                             <connections>
-                                <action selector="addCategory:" destination="BYZ-38-t0r" id="EX8-0z-61w"/>
+                                <action selector="addCategory:" destination="BYZ-38-t0r" id="FYT-qE-lar"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tabelView" destination="mRu-ay-bRs" id="gHB-fE-L9d"/>
                         <segue destination="yBZ-9B-Umz" kind="show" identifier="noteListScreen" id="XJL-sk-9MM"/>
                     </connections>
                 </viewController>
