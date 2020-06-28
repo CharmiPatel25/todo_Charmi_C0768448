@@ -106,6 +106,43 @@ class ViewController: UIViewController {
             
         }
     
+    func firstTimeSetup() {
+        let categoryNames = self.categoryArray.map {$0.name}
+        guard !categoryNames.contains("Archived") else {return}
+        let newCategory = Category(context: self.categoryContext)
+        newCategory.name = "Archived"
+        self.categoryArray.append(newCategory)
+        do {
+            try categoryContext.save()
+            tabelView.reloadData()
+        } catch {
+            print("Error  \(error.localizedDescription)")
+        }
+    }
+   func initializeCoreData() {
+       print("initialized")
+       let appDelegate = UIApplication.shared.delegate as! AppDelegate
+       categoryContext = appDelegate.persistentContainer.viewContext
+       
+       fetchCategoryData()
+       
+   }
+    
+    func fetchCategoryData() {
    
+            let request: NSFetchRequest<Category> = Category.fetchRequest()
+            let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+    
+            request.sortDescriptors = [sortDescriptor]
+            do {
+                categoryArray = try categoryContext.fetch(request)
+            } catch {
+                print("Error loading categories: \(error.localizedDescription)")
+            }
+    
+            tabelView.reloadData()
+            
+        }
+    
 } //class end
 

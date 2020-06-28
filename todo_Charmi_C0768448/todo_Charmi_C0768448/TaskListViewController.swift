@@ -193,6 +193,48 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
     
     
     
+    //search task
+    func showSearchBar() {
+        
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Category Folder"
+        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
+        definesPresentationContext = true
+        searchController.searchBar.searchTextField.textColor = .white
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+                
+        let predicate = NSPredicate(format: "name CONTAINS[cd] %@", searchBar.text!)
+        loadTodos(predicate: predicate)
+        tabelView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadTodos()
+
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+
+        }
+        loadTodos()
+        tabelView.reloadData()
+    }
+    
+    
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadTodos()
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+        tabelView.reloadData()
+        searchBar.resignFirstResponder()
+    }
     
     
 }//class end
