@@ -55,6 +55,23 @@ class TaskListViewController: UIViewController {
         }
         
     }
+    @IBAction func addTodo(_ sender: Any) {
+        performSegue(withIdentifier: "todoViewScreen", sender: self)
+    }
     
-
-}
+    
+    @IBAction func sortToDo(_ sender: Any) {
+        switch (sender as AnyObject).selectedSegmentIndex {
+               case 0: selectedSort = 0
+                   break
+               case 1: selectedSort = 1
+                   break
+               default:
+                   break
+               }
+               
+               loadTodos()
+               tabelView.reloadData()
+    }
+    
+}//class end

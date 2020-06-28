@@ -103,6 +103,7 @@
                                     <segment title="Sort By Name"/>
                                 </segments>
                                 <connections>
+                                    <action selector="sortToDo:" destination="yBZ-9B-Umz" eventType="valueChanged" id="Vby-Pz-OU9"/>
                                     <action selector="sortTodos:" destination="yBZ-9B-Umz" eventType="valueChanged" id="5ph-eH-kio"/>
                                 </connections>
                             </segmentedControl>
@@ -125,7 +126,7 @@
                     <navigationItem key="navigationItem" id="OU8-8V-quc">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="GiC-kE-ghJ">
                             <connections>
-                                <action selector="addTodo:" destination="yBZ-9B-Umz" id="8bb-gL-d3H"/>
+                                <action selector="addTodo:" destination="yBZ-9B-Umz" id="lDF-pY-A5d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
