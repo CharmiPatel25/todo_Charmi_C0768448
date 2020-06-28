@@ -91,13 +91,13 @@ extension TaskListViewController {
            let sortOptions = ["date", "name"]
            let todoPredicate = NSPredicate(format: "parentFolder.name=%@", selectedCategory!.name!)
            request.sortDescriptors = [NSSortDescriptor(key: sortOptions[selectedSort], ascending: true)]
-           /*if let addtionalPredicate = predicate
+           if let addtionalPredicate = predicate
            {
                request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [todoPredicate, addtionalPredicate])
            } else
            {
                request.predicate = todoPredicate
-           }*/
+           }
            
            do {
                tasksArray = try todoListContext.fetch(request)

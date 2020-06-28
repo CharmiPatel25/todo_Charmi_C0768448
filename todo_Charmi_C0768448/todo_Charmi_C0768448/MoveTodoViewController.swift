@@ -37,7 +37,7 @@ class MoveTodoViewController: UIViewController {
 extension MoveTodoViewController {
     func loadCategories() {
         let request: NSFetchRequest<Category> = Category.fetchRequest()
-        let categoryPredicate = NSPredicate(format: "No match %@", selectedTodo?[0].parentFolder?.name ?? "")
+        let categoryPredicate = NSPredicate(format: "NOT name MATCHES %@", selectedTodo?[0].parentFolder?.name ?? "")
         request.predicate = categoryPredicate
         
         do {
