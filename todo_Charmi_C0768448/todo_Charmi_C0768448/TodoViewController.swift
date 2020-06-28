@@ -37,6 +37,12 @@ class TodoViewController: UIViewController {
     
     
     @IBAction func doneBtn(_ sender: Any) {
+        if(checkTitle()) {
+            todo?.name = todoLbl!.text!
+            todo?.due_date = datePicker!.date
+            delegate?.markTodoCompleted()
+            navigationController?.popViewController(animated: true)
+        }
         
     }
     

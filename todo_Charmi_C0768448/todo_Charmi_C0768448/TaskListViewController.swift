@@ -84,4 +84,31 @@ class TaskListViewController: UIViewController {
         
     }
     
+    func saveTodos() {
+        do {
+            try todoListContext.save()
+        } catch {
+            print("Error  \(error.localizedDescription)")
+        }
+    }
+    
+    func markTodoCompleted() {
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request: NSFetchRequest<Category> = Category.fetchRequest()
+        let folderPredicate = NSPredicate(format: "name MATCHES %@", "Archived")
+        request.predicate = folderPredicate
+        do {
+            let category = try context.fetch(request)
+            self.selectedTodo?.parentFolder = category.first
+            saveTodos()
+            tasksArray.removeAll { (Todo) -> Bool in
+                Todo == selectedTodo!
+            }
+            tabelView.reloadData()
+        } catch {
+            print("Error fetching data \(error.localizedDescription)")
+        }
+        
+    }
 }//class end
