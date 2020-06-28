@@ -150,7 +150,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What needs to be done?" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AaY-dA-dmi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter tasks" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="AaY-dA-dmi">
                                 <rect key="frame" x="10" y="134.5" width="394" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -175,7 +175,7 @@
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="deleteTask:" destination="uzU-aK-Lmp" eventType="touchUpInside" id="s7x-B3-XZG"/>
+                                            <action selector="deleteBtn:" destination="uzU-aK-Lmp" eventType="touchUpInside" id="9Ee-wk-J7f"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QB6-iQ-iuo">
@@ -185,7 +185,7 @@
                                             <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="markCompleted:" destination="uzU-aK-Lmp" eventType="touchUpInside" id="Zqa-ug-P0h"/>
+                                            <action selector="doneBtn:" destination="uzU-aK-Lmp" eventType="touchUpInside" id="5po-tn-Trk"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -220,13 +220,14 @@
                     <navigationItem key="navigationItem" id="c3S-3e-2Qm">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="mQa-39-kg0">
                             <connections>
-                                <action selector="saveTask:" destination="uzU-aK-Lmp" id="972-dV-IzA"/>
+                                <action selector="saveBtn:" destination="uzU-aK-Lmp" id="Syj-n0-pjp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonStack" destination="xad-Mx-ieC" id="cri-ld-fph"/>
-                        <outlet property="todoTitleLabel" destination="AaY-dA-dmi" id="YN4-8U-lTN"/>
+                        <outlet property="buttonStack" destination="xad-Mx-ieC" id="TI2-Hz-lq9"/>
+                        <outlet property="datePicker" destination="ZA5-xE-WJQ" id="iMG-Kk-lRO"/>
+                        <outlet property="todoLbl" destination="AaY-dA-dmi" id="wZo-Y2-ugX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtk-xM-yWE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

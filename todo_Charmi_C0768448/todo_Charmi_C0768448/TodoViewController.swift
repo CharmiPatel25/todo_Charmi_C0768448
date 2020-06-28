@@ -11,22 +11,32 @@ import CoreData
 
 
 class TodoViewController: UIViewController {
-
+    
+    var todo: Todo?
+    var delegate: TaskListViewController?
+    @IBOutlet weak var todoLbl: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    @IBOutlet weak var buttonStack: UIStackView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func saveBtn(_ sender: Any) {
+        
     }
-    */
+    
+    @IBAction func deleteBtn(_ sender: Any) {
+    }
+    
+    
+    
+    @IBAction func doneBtn(_ sender: Any) {
+        
+    }
+    
 
-}
+}//class end
