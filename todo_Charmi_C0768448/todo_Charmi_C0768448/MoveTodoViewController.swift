@@ -41,4 +41,26 @@ class MoveTodoViewController: UIViewController {
            }
        }
 
+} //class end
+
+
+extension MoveTodoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return categories.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "")
+        cell.textLabel?.text = categories[indexPath.row].name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+            for todo in self.selectedTodo! {
+                todo.parentFolder = self.categories[indexPath.row]
+            }
+            self.performSegue(withIdentifier: "goBackToTaskList", sender: self)
+        
+    }
 }
