@@ -169,4 +169,30 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
         delete.image = UIImage(systemName: "trash.fill")
         return UISwipeActionsConfiguration(actions: [delete])
     }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+           let complete = UIContextualAction(style: .normal, title: "Done") { (action, view, completion) in
+               self.selectedTodo = self.tasksArray[indexPath.row]
+               self.markTodoCompleted()
+           }
+           let move = UIContextualAction(style: .normal, title: "Move") { (action, view, completion) in
+               self.todoToMove.append(self.tasksArray[indexPath.row])
+               self.performSegue(withIdentifier: "moveTodoScreen", sender: nil)
+           }
+           complete.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+           complete.image = UIImage(systemName: "checkmark.circle.fill")
+           move.backgroundColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+           move.image = UIImage(systemName: "arrowshape.turn.up.right.fill")
+           return UISwipeActionsConfiguration(actions: [complete, move])
+       }
+       
+       func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+           selectedTodo = tasksArray[indexPath.row]
+           performSegue(withIdentifier: "todoViewScreen", sender: self)
+       }
+    
+    
+    
+    
+    
 }//class end
