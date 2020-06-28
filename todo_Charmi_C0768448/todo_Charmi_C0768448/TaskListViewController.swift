@@ -7,9 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 class TaskListViewController: UIViewController {
-
+    
+    @IBOutlet weak var sortSegment: UISegmentedControl!
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var tabelView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
