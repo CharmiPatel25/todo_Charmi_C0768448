@@ -155,4 +155,18 @@ class TaskListViewController: UIViewController ,UITableViewDelegate, UITableView
                    }
                    return cell
        }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, completion) in
+            
+            self.todoListContext.delete(self.tasksArray[indexPath.row])
+            self.tasksArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            completion(true)
+        }
+        
+        delete.backgroundColor = UIColor.lightGray
+        delete.image = UIImage(systemName: "trash.fill")
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
 }//class end
